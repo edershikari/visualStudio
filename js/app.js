@@ -37,7 +37,7 @@ $(document).ready(function(){
             
         }
      $('#productos').html(htmlCode); //Rellena todos los productos
-     $( "#todosProductos" ).click(function() {
+     $( "#todosProductos" ).click(function() { //boton con evento para mostrar todos los productos
        mostrarTodos(productos);         
     });
     }
