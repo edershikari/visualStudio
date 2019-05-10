@@ -11,7 +11,7 @@ $(document).ready(function(){
 
 
 
-    $.getJSON('http://localhost:8080/proyectoV1/api/productos', function(productos){
+    $.getJSON('http://localhost:8080/TrabajoFinal/api/productos', function(productos){
         console.log(productos);
        
 
@@ -36,9 +36,50 @@ $(document).ready(function(){
         }
      $('#productos').html(htmlCode);
 
-        
+            // /////////////////
+
+
+            //cuando se click una img se esconda todo y solo aparezcan los datos del producto
+            $('#productos img').on("click", function(){
+                    
+                //Cojer el id
+                var id = $(this).data('id'); //data: 
+
+                //Buscar el producto en el array
+                var productoSeleccionado = buscarProducto(id);
+
+                //rellenar el card 
+                 rellenarElCard(productoSeleccionado);
+                //  $('#cabecera').hide();
+                //  $('#categorias').hide();
+                //  $('#productos').hide();
+            });
+
+            function buscarProducto(id){
+                for (let index = 0; index < productos.length; index++) {
+                    const producto = productos[index];
+                    
+                    if (id == producto.id) {
+                        return producto;
+                    }
+                }
+            }
+            function rellenarElCard(productoSeleccionado){
+                $('#producto-card h3').html(productoSeleccionado.nombre);
+                $('#producto-card p').html(productoSeleccionado.descripcion);
+                $('#producto-card img').attr('src',productoSeleccionado.imagen);
+                $('#producto-card img').attr('style','width:200px;');
+
+            }
+
+
+            ///////////////////
+
     });
-    $.getJSON('http://localhost:8080/proyectoV1/api/categorias', function(categorias){
+
+
+
+    $.getJSON('http://localhost:8080/TrabajoFinal/api/categorias', function(categorias){
         console.log(categorias);
        
 
@@ -63,4 +104,9 @@ $(document).ready(function(){
         
 
     });
+
+
+        
+
+
 });
