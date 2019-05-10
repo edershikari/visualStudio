@@ -13,8 +13,10 @@ $(document).ready(function(){
 
     $.getJSON('http://localhost:8080/proyectoV1/api/productos', function(productos){
         console.log(productos);
-       
+        mostrarTodos(productos);
+    });
 
+    function mostrarTodos(productos){
         var htmlCode = "";
 
         htmlCode += '';
@@ -28,16 +30,25 @@ $(document).ready(function(){
             htmlCode += '<div id="info">';
             htmlCode += '<p> '+producto.nombre+'</p>';
             htmlCode += '<p> '+producto.precio+'€</p>';
-            htmlCode += '<button type="button" class="btn btn-dark">añadir a la cesta</button>';
+            htmlCode += '<button type="button" class="btn btn-dark">añadir  al carrito</button>';
             htmlCode += '</div>';
             htmlCode += '</div>';
 
             
         }
-     $('#productos').html(htmlCode);
+     $('#productos').html(htmlCode); //Rellena todos los productos
+     $( "#todosProductos" ).click(function() {
+       mostrarTodos(productos);         
+    });
+    }
+            
+     
 
         
     });
+
+    
+
     $.getJSON('http://localhost:8080/proyectoV1/api/categorias', function(categorias){
         console.log(categorias);
        
@@ -51,14 +62,20 @@ $(document).ready(function(){
             const categoria = categorias[index];
             console.log(categoria.nombre);
             htmlCode += '<div id="categoria' +categoria.id_categoria+ '" data-idCategoria="'+categoria.id_categoria+'" class="categoria" style="border:solid 2px black" >';
-            htmlCode += '<p> '+categoria.nombre+'</p>';
+            htmlCode += '<button style="width:100%" type="button" class="btn btn-dark"> '+categoria.nombre+'</button>'
             htmlCode += '</div>';
+           
 
-            
         }
-     $('#categorias').html(htmlCode);
 
-        //anadir evento a categoria
+            htmlCode += '<div id="todosProductos"  style="border:solid 2px black" >';
+            htmlCode += '<button style="width:100%" type="button" class="btn btn-dark">Todos los productos</button>'
+            htmlCode += '</div>';
+     $('#categorias').html(htmlCode); // Rellena todas las categorias
+
+            $( "#categorias" ).click(function() {
+                alert( "Handler for .click() called." );
+        });
 
         
 
