@@ -5,7 +5,7 @@ $(document).ready(function(){
 
     htmlCode += '';
     htmlCode += '<img src="ButtCapper_Banner2.gif">';
-    htmlCode += '<button class="btn">Carrito</button>';
+    htmlCode += '<a href="http://localhost:8080/proyectoV1/Carrito" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Carrito</a>';
 
     $('#cabecera').html(htmlCode);
 
@@ -44,7 +44,7 @@ $(document).ready(function(){
     }
         
 
-    $.getJSON('http://localhost:8080/proyectoV1/api/categorias', function(categorias){
+    $.getJSON('http://localhost:8080/proyectoV1/api/categorias', function(categorias){ //lamada Json para rellenar categorias
         //console.log(categorias);
 
         var htmlCode = "";

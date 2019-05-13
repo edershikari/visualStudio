@@ -4,7 +4,7 @@ body{
 
 .container {
     position: relative;
-    width: 100%;
+    max-width: 100%;
     margin: 0%;
     padding: 0%;
   }
@@ -33,4 +33,7 @@ body{
   
   .container .btn:hover {
     background-color: black;
+  }
+  .d-flex-my{
+    display: flex;
   }
