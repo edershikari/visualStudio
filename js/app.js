@@ -4,10 +4,8 @@ $(document).ready(function(){
         
     var htmlCode = "";
 
-    htmlCode += '';
-    htmlCode += '<img src="ButtCapper_Banner2.gif">';
+    htmlCode += '<img src="ButtCapper_Banner2.gif" class="flex-item">';
     htmlCode += '<button class="btn">Carrito</button>';
-
     $('#cabecera').html(htmlCode);
 
 

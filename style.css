@@ -1,17 +1,19 @@
 body{
-    margin: 5px;
+    padding: 0%;
+    margin: 0;
 }
 
 .container {
     position: relative;
-    width: 100%;
-    margin: 0%;
-    padding: 0%;
+    margin: 0;
+    padding: 0;
+    max-width: 91%;
+
   }
   
   /* Make the image responsive */
   .container img {
-    width: 100%;
+    width: 110%;
     height: 220px;
   }
   
@@ -37,3 +39,4 @@ body{
   .d-flex-my{
     display: flex;
   }
+
