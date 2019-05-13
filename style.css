@@ -34,3 +34,6 @@ body{
   .container .btn:hover {
     background-color: black;
   }
+  .d-flex-my{
+    display: flex;
+  }

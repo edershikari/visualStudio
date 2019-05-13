@@ -1,5 +1,6 @@
 $(document).ready(function(){
-
+    
+    $('#producto-card').hide();
         
     var htmlCode = "";
 
@@ -53,6 +54,8 @@ $(document).ready(function(){
                  $('#cabecera').hide();
                  $('#categorias').hide();
                  $('#productos').hide();
+                 $('#producto-card').show();
+
             });
 
             function buscarProducto(id){
@@ -65,18 +68,13 @@ $(document).ready(function(){
                 }
             }
             function rellenarElCard(productoSeleccionado){
-                // function rellenarElCard(productoSeleccionado){
-                //     var htmlCode="";
-                //     htmlCode += '<h3> '+producto.nombre+'</h3>';
-                //     htmlCode += '<p> '+producto.descripcion+'€</p>';
-                //     htmlCode += '<img src="'+productoSeleccionado.imagen+' style="width:200px;"/>';
-                
-                //     $('#producto-card').html(htmlCode);
+
                 $('#producto-card h3').html(productoSeleccionado.nombre);
-                $('#producto-card p').html(productoSeleccionado.descripcion);
+                $('#descripcion').html(productoSeleccionado.descripcion);
                 $('#producto-card img').attr('src',productoSeleccionado.imagen);
                 $('#producto-card img').attr('style','width:200px;');
-
+                $('#precio').html(productoSeleccionado.precio);
+                
             }
 
 
