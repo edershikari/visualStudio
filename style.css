@@ -18,8 +18,8 @@ body{
   /* Style the button and place it in the middle of the container/image */
   .container .btn {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 90%;
+    left: 96%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     background-color: #555;
@@ -37,3 +37,9 @@ body{
   .d-flex-my{
     display: flex;
   }
+
+  .card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
