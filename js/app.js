@@ -5,8 +5,7 @@ $(document).ready(function(){
 
     htmlCode += '';
     htmlCode += '<img src="ButtCapper_Banner2.gif">';
-    htmlCode += '<a href="http://localhost:8080/proyectoV1/Carrito" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Carrito</a>';
-
+    
     $('#cabecera').html(htmlCode);
 
     $.getJSON('http://localhost:8080/proyectoV1/api/productos', function(productos){
@@ -28,7 +27,7 @@ $(document).ready(function(){
             htmlCode += '<div id="info">';
             htmlCode += '<p> '+producto.nombre+'</p>';
             htmlCode += '<p> '+producto.precio+'€</p>';
-            htmlCode += '<button type="button" class="btn btn-dark">añadir  al carrito</button>';
+            htmlCode += '<button type="button" class="btn btn-dark aniadir">añadir  al carrito</button>';
             htmlCode += '</div>';
             htmlCode += '</div>';
 
@@ -50,7 +49,8 @@ $(document).ready(function(){
         var htmlCode = "";
 
         htmlCode += '';
-        
+        htmlCode += '<a href="http://localhost:8080/proyectoV1/Carrito" id="verCarrito" class="btn btn-primary btn-lg " type="button" aria-pressed="true">Carrito</a>';
+        htmlCode += '<a href="http://localhost:8080/proyectoV1/Carrito" class="btn btn-secondary btn-lg admin" type="button" aria-pressed="true">Admnin</a>';
 
         for (let index = 0; index < categorias.length; index++) {
             const categoria = categorias[index];
@@ -85,7 +85,36 @@ $(document).ready(function(){
 
     });
 
-   
+    $(document).ready(function(){    
+        $('.aniadir').click(function(){        
+            /*Captura de datos escrito en los inputs*/        
+            var img = document.getElementById("nombretxt").value;
+            var nom = document.getElementById("apellidotxt").value;
+            var price = document.getElementById("apellidotxt").value;
+            /*Guardando los datos en el LocalStorage*/
+            localStorage.setItem("Nombre", nom);
+            localStorage.setItem("Apellido", apel);
+            localStorage.setItem("Apellido", apel);
+            
+            /*Limpiando los campos o inputs*/
+            document.getElementById("nombretxt").value = "";
+            document.getElementById("apellidotxt").value = "";
+        });   
+    });
+    
+    /*Funcion Cargar y Mostrar datos*/
+    $(document).ready(function(){    
+        $('#verCarrito').click(function(){                       
+            /*Obtener datos almacenados*/
+            var img = localStorage.getItem("Nombre");
+            var nom = localStorage.getItem("Apellido");
+            var price = document.getElementById("apellidotxt").value;
+            /*Mostrar datos almacenados*/      
+            document.getElementById("nombre").innerHTML = nombre;
+            document.getElementById("apellido").innerHTML = apellido; 
+        });   
+    });
+    
 
 
 }); //document.ready
