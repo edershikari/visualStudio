@@ -8,12 +8,14 @@ $(document).ready(function(){
     htmlCode += '<img src="ButtCapper_Banner2.gif">';
     
     $('#cabecera').html(htmlCode);
-
+var idArray=[];
     $.getJSON('http://localhost:8080/proyectoV1/api/productos', function(productos){
         console.log(productos);
         mostrarTodos(productos);
         mostrarProducto(productos);
+        AlmacenamientoCarrito(productos);
     });
+
     function mostrarProducto(productos){
                     //cuando se click una img se esconda todo y solo aparezcan los datos del producto
                     $('#productos img').on("click", function(){
@@ -81,17 +83,18 @@ $(document).ready(function(){
             htmlCode += '<div id="info">';
             htmlCode += '<p> '+producto.nombre+'</p>';
             htmlCode += '<p> '+producto.precio+'€</p>';
-            htmlCode += '<button type="button" class="btn btn-dark aniadir">añadir  al carrito</button>';
+            htmlCode += '<button type="button"  data-id_producto="'+producto.id_producto+'" class="btn btn-dark aniadir">añadir  al carrito</button>';
             htmlCode += '</div>';
             htmlCode += '</div>';
 
             
         }
         $('#productos').html(htmlCode); //Rellena todos los productos
-        $( ".todosProductos" ).click(function(productos) { //boton con evento para mostrar todos los productos
+        $( ".todosProductos" ).click(function() { //boton con evento para mostrar todos los productos
             $.getJSON('http://localhost:8080/proyectoV1/api/productos', function(productos){
                 console.log(productos);
                 mostrarTodos(productos);
+
             });     
         });
     }
@@ -139,37 +142,64 @@ $(document).ready(function(){
 
     });
 
-    $(document).ready(function(){    
-        $('.aniadir').click(function(){        
+
+    function AlmacenamientoCarrito(productos){
+
+        $('.aniadir').click(function(){ 
+
+            var productoACarrito= choosenProduct(productos, $(this));
+
             /*Captura de datos escrito en los inputs*/        
-            var img = document.getElementById("nombretxt").value;
-            var nom = document.getElementById("apellidotxt").value;
-            var price = document.getElementById("apellidotxt").value;
+            var id = productoACarrito.id_producto;
+           
             /*Guardando los datos en el LocalStorage*/
-            localStorage.setItem("Nombre", nom);
-            localStorage.setItem("Apellido", apel);
-            localStorage.setItem("Apellido", apel);
+            localStorage.setItem("Id_producto", id);
             
-            /*Limpiando los campos o inputs*/
-            document.getElementById("nombretxt").value = "";
-            document.getElementById("apellidotxt").value = "";
+            
+            // /*Limpiando los campos o inputs*/
+            // document.getElementById("nombretxt").value = "";
+            // document.getElementById("apellidotxt").value = "";
         });   
-    });
+    
     
     /*Funcion Cargar y Mostrar datos*/
-    $(document).ready(function(){    
         $('#verCarrito').click(function(){                       
             /*Obtener datos almacenados*/
-            var img = localStorage.getItem("Nombre");
-            var nom = localStorage.getItem("Apellido");
-            var price = document.getElementById("apellidotxt").value;
+            var id = localStorage.getItem("Id_producto");
+          
             /*Mostrar datos almacenados*/      
-            document.getElementById("nombre").innerHTML = nombre;
-            document.getElementById("apellido").innerHTML = apellido; 
-        });   
-    });
+
+            document.getElementById("Id_producto").innerHTML = id; 
+           
+  
+        });
     
 
+    }
+    
+
+    function choosenProduct(productos, boton){
+        //cuando se click una img se esconda todo y solo aparezcan los datos del producto
+        //console.log(productos.length);
+            var i=0;
+            //Cojer el id
+            var id = boton.data('id_producto'); //data: 
+            
+            //Buscar el producto en el array
+            var productoACarrito = idProducto(id, productos);           
+            idArray.push(productoACarrito.id_producto);
+            i++;
+        console.log(idArray);
+        function idProducto(id, productos){
+            for (let index = 0; index < productos.length; index++) {
+                const producto = productos[index];
+                if (id == producto.id_producto) {
+                    return producto;
+                }
+            }
+        }
+        return productoACarrito;
+}
 
 }); //document.ready
 
