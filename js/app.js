@@ -90,13 +90,7 @@ var idArray=[];
             
         }
         $('#productos').html(htmlCode); //Rellena todos los productos
-        $( ".todosProductos" ).click(function() { //boton con evento para mostrar todos los productos
-            $.getJSON('http://localhost:8080/proyectoV1/api/productos', function(productos){
-                console.log(productos);
-                mostrarTodos(productos);
-
-            });     
-        });
+       
     }
         
 
@@ -122,6 +116,7 @@ var idArray=[];
         htmlCode += '<button  style="width:100%" type="button" class="btn btn-dark todosProductos">Todos los productos</button>'
         htmlCode += '</div>';
         
+        
         $('#categorias').html(htmlCode); // Rellena todas las categorias
 
         $( ".class_cat" ).click(function() {
@@ -135,7 +130,7 @@ var idArray=[];
             $.getJSON('http://localhost:8080/proyectoV1/api/categoriasFiltrado',data, function(productos){
                 console.log("FILTRADOS : "+productos);
                 mostrarTodos(productos);
-            
+                mostrarProducto(productos);
             });
         });
 
