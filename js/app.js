@@ -13,7 +13,45 @@ $(document).ready(function () {
         console.log(productos);
         mostrarTodos(productos);
         mostrarProducto(productos);
-        AlmacenamientoCarrito(productos);
+
+        //anadirIdAlCarrito(productos);
+
+        //anadirEventosABotonCarrito
+        $('.aniadir').click(function () {
+
+            var producto = choosenProduct(productos, $(this));
+
+            /*Captura de datos escrito en los inputs*/
+            var id = producto.id_producto;
+
+            idArray.push(id);
+
+            /*Guardando los datos en el LocalStorage*/
+            localStorage.setItem("Id_producto", id);
+
+
+            //almacenar en local storage el array de id-s
+            localStorage.setItem('datos', JSON.stringify(idArray));
+            // /*Limpiando los campos o inputs*/
+            // document.getElementById("nombretxt").value = "";
+            // document.getElementById("apellidotxt").value = "";
+        });
+
+
+
+
+        //anadir evento al boton ver carrito
+        /*Funcion Cargar y Mostrar datos*/
+        $('#verCarrito').click(function () {
+            /*Obtener datos almacenados*/
+            var id = localStorage.getItem("Id_producto");
+
+            /*Mostrar datos almacenados*/
+
+            document.getElementById("Id_producto").innerHTML = id;
+
+
+        });
     });
 
     function mostrarProducto(productos) {
@@ -143,7 +181,7 @@ $(document).ready(function () {
     });
 
 
-    function AlmacenamientoCarrito(productos) {
+    function anadirIdAlCarrito(productos) {
 
         $('.aniadir').click(function () {
 
@@ -188,9 +226,9 @@ $(document).ready(function () {
 
         //Buscar el producto en el array
         var productoACarrito = idProducto(id, productos);
-        idArray.push(productoACarrito.id_producto);
+
         i++;
-        console.log(idArray);
+        //console.log(idArray);
         function idProducto(id, productos) {
             for (let index = 0; index < productos.length; index++) {
                 const producto = productos[index];
