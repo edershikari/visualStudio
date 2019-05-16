@@ -1,4 +1,13 @@
+
 $(document).ready(function () {
+
+    var idArray = [];
+    var data = JSON.parse(localStorage.getItem('datos'));
+    console.log(data);
+
+    // var array = localStorage.getItem('datos');
+    // // Se parsea para poder ser usado en js con JSON.parse :)
+    // array = JSON.parse(array);
 
 
     var htmlCode = "";
@@ -8,7 +17,7 @@ $(document).ready(function () {
     htmlCode += '<img src="ButtCapper_Banner2.gif">';
 
     $('#cabecera').html(htmlCode);
-    var idArray = [];
+
     $.getJSON('http://localhost:8080/proyectoV1/api/productos', function (productos) {
         console.log(productos);
         mostrarTodos(productos);
@@ -27,13 +36,12 @@ $(document).ready(function () {
             idArray.push(id);
 
             /*Guardando los datos en el LocalStorage*/
-            localStorage.setItem("Id_producto", id);
 
 
             //almacenar en local storage el array de id-s
             localStorage.setItem('datos', JSON.stringify(idArray));
+
             // /*Limpiando los campos o inputs*/
-            // document.getElementById("nombretxt").value = "";
             // document.getElementById("apellidotxt").value = "";
         });
 
