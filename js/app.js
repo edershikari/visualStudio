@@ -40,6 +40,8 @@ $(document).ready(function () {
 
             if (vCarrito==null) {
                 vCarrito=[];
+                vCarrito.push(id);
+
             } else {
                 vCarrito.push(id);
             }
