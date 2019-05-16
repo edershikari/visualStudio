@@ -1,9 +1,9 @@
 
 $(document).ready(function () {
 
-    var idArray = [];
-    var data = JSON.parse(localStorage.getItem('datos'));
-    console.log(data);
+    var vCarrito = [];
+    // var data = JSON.parse(localStorage.getItem('datos'));
+    // console.log(data);
 
     // var array = localStorage.getItem('datos');
     // // Se parsea para poder ser usado en js con JSON.parse :)
@@ -26,28 +26,34 @@ $(document).ready(function () {
         //anadirIdAlCarrito(productos);
 
         //anadirEventosABotonCarrito
+        
+
+
+
         $('.aniadir').click(function () {
 
             var producto = choosenProduct(productos, $(this));
 
             /*Captura de datos escrito en los inputs*/
             var id = producto.id_producto;
+            var vCarrito=JSON.parse(localStorage.getItem('carrito'));
 
-            idArray.push(id);
+            if (vCarrito==null) {
+                vCarrito=[];
+            } else {
+                vCarrito.push(id);
+            }
 
             /*Guardando los datos en el LocalStorage*/
-
-
-            //almacenar en local storage el array de id-s
-            localStorage.setItem('datos', JSON.stringify(idArray));
+            //Almacenar en local storage el array de id-s
+            localStorage.setItem('carrito', JSON.stringify(vCarrito));
 
             // /*Limpiando los campos o inputs*/
             // document.getElementById("apellidotxt").value = "";
         });
 
 
-
-
+       
         //anadir evento al boton ver carrito
         /*Funcion Cargar y Mostrar datos*/
         $('#verCarrito').click(function () {
