@@ -60,45 +60,16 @@ $(document).ready(function () {
        
         //anadir evento al boton ver carrito
         /*Funcion Cargar y Mostrar datos*/
-        $('#verCarrito').click(function () {
-            var htmlCode = "";
-            htmlCode += '';
-            // for (let index = 0; index < vCarrito.length; index++) {
-            //     vCarrito.id;
+        $('#verCarrito').click(productos,function () {
+           
+        for (let index = productos.length; index < productos.length; index--) {
+            const producto = productos[index];
+            if(vCarrito.includes(producto.id_producto)){
+                $("#carrrito > p").html("Este producto esta en el carrito"+producto.id_producto);
+                console.log("Este producto esta en el carrito"+producto.id_producto);
+            }
+        }
 
-//             var vCarrito=JSON.parse(localStorage.getItem('carrito'));
-
-//             var vCarrito = JSON.parse(localStorage.getItem('carrito'));
-//              for (let index = 0; index > array.length; index--) {
-//                 const producto = productos[index];
-
-//             var idEncontrado = vCarrito.includes(producto.id);
-//             document.getElementById("#carrito").innerHTML = idEncontrado;
-// }
-
-for (let index = 0; index < productos.length; index++) {
-    const producto = productos[index];
-    if(vCarrito.includes(producto.id_producto)){
-        $("#carrrito > p").html("Este producto esta en el carrito"+producto.id_producto);
-        console.log("Este producto esta en el carrito"+producto.id_producto);
-    }
-}
-// var carrito = JSON.parse(localStorage.getItem('carrito'));
-// document.getElementById("#carrito").innerHTML = vCarrito.some(c => c.id == productos.id_producto) ? "yay" : 'nay';
-
-// localStorage.setItem('carrito', JSON.stringify({
-// 	producto.id_producto: 1;
-// }}));
-
-
-            // for (let index = 0; index > array.length; index--) {
-            //     const producto = productos[index];
-
-            //     if(producto.id) {
-                    
-            //     }
-                
-            // }
 
             // for (let index = 0; index < vCarrito.length; index++) {
             //     htmlCode += '<table class="table table-hover">';
