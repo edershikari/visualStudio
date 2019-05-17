@@ -42,8 +42,10 @@ $(document).ready(function () {
                 vCarrito=[];
                 vCarrito.push(id);
 
-            } else {
-                vCarrito.push(id);
+            } else if (vCarrito.includes(id)){
+                alert("Este elemento está ya en el carrito.");            
+            }else {
+                    vCarrito.push(id);
             }
 
             /*Guardando los datos en el LocalStorage*/
@@ -59,12 +61,76 @@ $(document).ready(function () {
         //anadir evento al boton ver carrito
         /*Funcion Cargar y Mostrar datos*/
         $('#verCarrito').click(function () {
-            /*Obtener datos almacenados*/
-            var id = localStorage.getItem("Id_producto");
+            var htmlCode = "";
+            htmlCode += '';
+            // for (let index = 0; index < vCarrito.length; index++) {
+            //     vCarrito.id;
 
-            /*Mostrar datos almacenados*/
+//             var vCarrito=JSON.parse(localStorage.getItem('carrito'));
 
-            document.getElementById("Id_producto").innerHTML = id;
+//             var vCarrito = JSON.parse(localStorage.getItem('carrito'));
+//              for (let index = 0; index > array.length; index--) {
+//                 const producto = productos[index];
+
+//             var idEncontrado = vCarrito.includes(producto.id);
+//             document.getElementById("#carrito").innerHTML = idEncontrado;
+// }
+
+for (let index = 0; index < productos.length; index++) {
+    const producto = productos[index];
+    if(vCarrito.includes(producto.id_producto)){
+        $("#carrrito > p").html("Este producto esta en el carrito"+producto.id_producto);
+        console.log("Este producto esta en el carrito"+producto.id_producto);
+    }
+}
+// var carrito = JSON.parse(localStorage.getItem('carrito'));
+// document.getElementById("#carrito").innerHTML = vCarrito.some(c => c.id == productos.id_producto) ? "yay" : 'nay';
+
+// localStorage.setItem('carrito', JSON.stringify({
+// 	producto.id_producto: 1;
+// }}));
+
+
+            // for (let index = 0; index > array.length; index--) {
+            //     const producto = productos[index];
+
+            //     if(producto.id) {
+                    
+            //     }
+                
+            // }
+
+            // for (let index = 0; index < vCarrito.length; index++) {
+            //     htmlCode += '<table class="table table-hover">';
+            //     htmlCode += '<thead>';
+            //     htmlCode += '<tr>';
+            //     htmlCode += '<th scope="col">Imagen</th>';
+            //     htmlCode += '<th scope="col">Nombre</th>';
+            //     htmlCode += '<th scope="col">Cantidad</th>';
+            //     htmlCode += '<th scope="col">Precio/Unidad</th>';
+            //     htmlCode += '</tr>';
+            //     htmlCode += '</thead>';
+            //     htmlCode += '<tbody>';
+            //     htmlCode += '<tr>';
+            //     htmlCode += '<th scope="row">'+producto.imagen+'</th>';
+            //     htmlCode += '<td>'+producto.nombre+'</td>';
+            //     htmlCode += '<td>'+producto.quantity+'</td>';
+            //     htmlCode += '<td>@'+producto.price+'</td>';
+            //     htmlCode += '</tr>';
+            //     htmlCode += '</tbody>';
+            //     htmlCode += '</table>';
+                
+            // }
+            // $('#carrito').html(htmlCode);
+                
+            // }
+
+            // /*Obtener datos almacenados*/
+             var id = localStorage.getItem("carrito");
+
+            // /*Mostrar datos almacenados*/
+
+             document.getElementById("carrito").innerHTML = id;
 
 
         });
@@ -156,12 +222,12 @@ $(document).ready(function () {
 
     $.getJSON('http://localhost:8080/proyectoV1/api/categorias', function (categorias) { //lamada Json para rellenar categorias
         //console.log(categorias);
-
+{/* <a href="http://localhost:8080/proyectoV1/Carrito" */}
         var htmlCode = "";
 
         htmlCode += '';
-        htmlCode += '<a href="http://localhost:8080/proyectoV1/Carrito" id="verCarrito" class="btn btn-primary btn-lg " type="button" aria-pressed="true">Carrito</a>';
-        htmlCode += '<a href="http://localhost:8080/proyectoV1/Carrito" class="btn btn-secondary btn-lg admin" type="button" aria-pressed="true">Admnin</a>';
+        htmlCode += '<a href="Carrito.html" id="verCarrito" data-producto="'+vCarrito+'"class="btn btn-primary btn-lg " type="button" aria-pressed="true">Carrito</a>';
+        htmlCode += '<a href="" class="btn btn-secondary btn-lg admin" type="button" aria-pressed="true">Admnin</a>';
 
         for (let index = 0; index < categorias.length; index++) {
             const categoria = categorias[index];
@@ -197,40 +263,6 @@ $(document).ready(function () {
     });
 
 
-    function anadirIdAlCarrito(productos) {
-
-        $('.aniadir').click(function () {
-
-            var productoACarrito = choosenProduct(productos, $(this));
-
-            /*Captura de datos escrito en los inputs*/
-            var id = productoACarrito.id_producto;
-
-            /*Guardando los datos en el LocalStorage*/
-            localStorage.setItem("Id_producto", id);
-
-
-            // /*Limpiando los campos o inputs*/
-            // document.getElementById("nombretxt").value = "";
-            // document.getElementById("apellidotxt").value = "";
-        });
-
-        localStorage.setItem('datos', JSON.stringify(idArray));
-
-        /*Funcion Cargar y Mostrar datos*/
-        $('#verCarrito').click(function () {
-            /*Obtener datos almacenados*/
-            var id = localStorage.getItem("Id_producto");
-
-            /*Mostrar datos almacenados*/
-
-            document.getElementById("Id_producto").innerHTML = id;
-
-
-        });
-
-
-    }
 
 
     function choosenProduct(productos, boton) {
