@@ -35,17 +35,23 @@ $(document).ready(function () {
             var producto = choosenProduct(productos, $(this));
 
             /*Captura de datos escrito en los inputs*/
-            var id = producto.id_producto;
-            var vCarrito=JSON.parse(localStorage.getItem('carrito'));
+            var compra ={
+                id_producto : producto.id_producto,
+                nombre : producto.nombre,
+                imagen  : producto.imagen,
+                precio : producto.precio
+            }
 
+            var vCarrito=JSON.parse(localStorage.getItem('carrito'));
+            // console.log(compra.id);
             if (vCarrito==null) {
                 vCarrito=[];
-                vCarrito.push(id);
+                vCarrito.push(compra);
 
-            } else if (vCarrito.includes(id)){
+            } else if (vCarrito.includes(compra)){//no funciona
                 alert("Este elemento está ya en el carrito.");            
             }else {
-                    vCarrito.push(id);
+                    vCarrito.push(compra);
             }
 
             /*Guardando los datos en el LocalStorage*/
@@ -60,13 +66,18 @@ $(document).ready(function () {
        
         //anadir evento al boton ver carrito
         /*Funcion Cargar y Mostrar datos*/
+
         $('#verCarrito').click(productos,function () {
-           
-        for (let index = productos.length; index < productos.length; index--) {
+
+        var vCarrito=JSON.parse(localStorage.getItem('carrito'));
+
+            let i=productos.length-1;
+        for (let index = i; index>0; index--) {
             const producto = productos[index];
             if(vCarrito.includes(producto.id_producto)){
-                $("#carrrito > p").html("Este producto esta en el carrito"+producto.id_producto);
+                $("#carrito>p").html("Este producto esta en el carrito"+producto.id_producto);
                 console.log("Este producto esta en el carrito"+producto.id_producto);
+                i=index;
             }
         }
 
@@ -97,11 +108,11 @@ $(document).ready(function () {
             // }
 
             // /*Obtener datos almacenados*/
-             var id = localStorage.getItem("carrito");
+            //  var id = localStorage.getItem("carrito");
 
-            // /*Mostrar datos almacenados*/
+            // // /*Mostrar datos almacenados*/
 
-             document.getElementById("carrito").innerHTML = id;
+            //  document.getElementById("carrito").innerHTML = id;
 
 
         });
