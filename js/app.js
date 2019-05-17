@@ -42,8 +42,10 @@ $(document).ready(function () {
                 vCarrito=[];
                 vCarrito.push(id);
 
-            } else {
-                vCarrito.push(id);
+            } else if (vCarrito.includes(id)){
+                alert("Este elemento está ya en el carrito.");            
+            }else {
+                    vCarrito.push(id);
             }
 
             /*Guardando los datos en el LocalStorage*/
