@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var vCarrito=JSON.parse(localStorage.getItem('carrito'));
+    var numero=1;
 
-    console.log ('HOLA');
     var htmlCode;
     htmlCode += '<table class="table table-hover">';
     htmlCode += '<thead>';
@@ -19,8 +19,8 @@ $(document).ready(function () {
         htmlCode += '<tr>';
         htmlCode += '<th scope="row"><img src="'+vCarrito[i].imagen+'" style="max-width:100px"/></th>';
         htmlCode += '<td>'+vCarrito[i].nombre+'</td>';
-        htmlCode += '<td>'+vCarrito[i].quantity+'</td>';
-        htmlCode += '<td>'+vCarrito[i].precio+'</td>';
+        htmlCode += '<td><input type="button" id="mascantidad" value="+" >  '+numero+'  <input type="button" id="menoscantidad" value="-"></td>';
+        htmlCode += '<td>'+vCarrito[i].precio+'€</td>';
         htmlCode += '</tr>';
       
         
