@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var vCarrito=JSON.parse(localStorage.getItem('carrito'));
-    var numero=1;
+    var numero=[];
 
     var htmlCode;
     htmlCode += '<table class="table table-hover">';
@@ -13,8 +13,8 @@ $(document).ready(function () {
     htmlCode += '</tr>';
     htmlCode += '</thead>';
     htmlCode += '<tbody>';
+
     for (let i = 0; i < vCarrito.length; i++) {
-       
       
         htmlCode += '<tr>';
         htmlCode += '<th scope="row"><img src="'+vCarrito[i].imagen+'" style="max-width:100px"/></th>';
@@ -23,10 +23,14 @@ $(document).ready(function () {
         htmlCode += '<td>'+vCarrito[i].precio+'€</td>';
         htmlCode += '</tr>';
       
-        
     }
     htmlCode += '</tbody>';
     htmlCode += '</table>';
     $('#carrito').html(htmlCode);   
 
+    $('#mascantidad').click(function () {
+        
+        numero = numero + 1;
+
+    });
 });
