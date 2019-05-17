@@ -20,7 +20,7 @@ $(document).ready(function () {
         htmlCode += '<th scope="row"><img src="'+vCarrito[i].imagen+'" style="max-width:100px"/></th>';
         htmlCode += '<td>'+vCarrito[i].nombre+'</td>';
         htmlCode += '<td>'+vCarrito[i].quantity+'</td>';
-        htmlCode += '<td>'+vCarrito[i].precio+'</td>';
+        htmlCode += '<td>'+vCarrito[i].precio+'€</td>';
         htmlCode += '</tr>';
       
         
