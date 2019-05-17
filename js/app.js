@@ -41,19 +41,25 @@ $(document).ready(function () {
                 imagen  : producto.imagen,
                 precio : producto.precio
             }
-
             var vCarrito=JSON.parse(localStorage.getItem('carrito'));
+            var repetido=false;
+
             // console.log(compra.id);
             if (vCarrito==null) {
-                vCarrito=[];
-                vCarrito.push(compra);
+                vCarrito=[];           
+            } else {
 
-            } else if (vCarrito.includes(compra)){//no funciona
-                alert("Este elemento está ya en el carrito.");            
-            }else {
-                    vCarrito.push(compra);
+                for (let i=0;i< vCarrito.length;i++){
+
+                    if (vCarrito[i].id_producto== compra.id_producto){
+                        alert("Este elemento está ya en el carrito."); 
+                        repetido=true;
+                    }
+                }
             }
-
+            if(repetido==false){
+                vCarrito.push(compra);
+            }
             /*Guardando los datos en el LocalStorage*/
             //Almacenar en local storage el array de id-s
             localStorage.setItem('carrito', JSON.stringify(vCarrito));
