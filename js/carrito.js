@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var vCarrito=JSON.parse(localStorage.getItem('carrito'));
 
-    console.log ('HOLA');
+   
     var htmlCode;
     htmlCode += '<table class="table table-hover">';
     htmlCode += '<thead>';
