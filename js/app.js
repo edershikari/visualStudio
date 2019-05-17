@@ -76,10 +76,13 @@ $(document).ready(function () {
 //             document.getElementById("#carrito").innerHTML = idEncontrado;
 // }
 
-// for (let index = 0; index < productos.length; index++) {
-//     const producto = productos[index];
-    
-
+for (let index = 0; index < productos.length; index++) {
+    const producto = productos[index];
+    if(vCarrito.includes(producto.id_producto)){
+        $("#carrrito > p").html("Este producto esta en el carrito"+producto.id_producto);
+        console.log("Este producto esta en el carrito"+producto.id_producto);
+    }
+}
 // var carrito = JSON.parse(localStorage.getItem('carrito'));
 // document.getElementById("#carrito").innerHTML = vCarrito.some(c => c.id == productos.id_producto) ? "yay" : 'nay';
 
@@ -260,40 +263,6 @@ $(document).ready(function () {
     });
 
 
-    function anadirIdAlCarrito(productos) {
-
-        $('.aniadir').click(function () {
-
-            var productoACarrito = choosenProduct(productos, $(this));
-
-            /*Captura de datos escrito en los inputs*/
-            var id = productoACarrito.id_producto;
-
-            /*Guardando los datos en el LocalStorage*/
-            localStorage.setItem("Id_producto", id);
-
-
-            // /*Limpiando los campos o inputs*/
-            // document.getElementById("nombretxt").value = "";
-            // document.getElementById("apellidotxt").value = "";
-        });
-
-        localStorage.setItem('datos', JSON.stringify(idArray));
-
-        /*Funcion Cargar y Mostrar datos*/
-        $('#verCarrito').click(function () {
-            /*Obtener datos almacenados*/
-            var id = localStorage.getItem("Id_producto");
-
-            /*Mostrar datos almacenados*/
-
-            document.getElementById("Id_producto").innerHTML = id;
-
-
-        });
-
-
-    }
 
 
     function choosenProduct(productos, boton) {
