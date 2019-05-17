@@ -2,13 +2,7 @@
 $(document).ready(function () {
 
     var vCarrito = [];
-    // var data = JSON.parse(localStorage.getItem('datos'));
-    // console.log(data);
-
-    // var array = localStorage.getItem('datos');
-    // // Se parsea para poder ser usado en js con JSON.parse :)
-    // array = JSON.parse(array);
-
+    //localStorage.removeItem("carrito");
 
     var htmlCode = "";
     $('#producto-card').hide();
@@ -64,64 +58,7 @@ $(document).ready(function () {
             //Almacenar en local storage el array de id-s
             localStorage.setItem('carrito', JSON.stringify(vCarrito));
 
-            // /*Limpiando los campos o inputs*/
-            // document.getElementById("apellidotxt").value = "";
-        });
-
-
-       
-        //anadir evento al boton ver carrito
-        /*Funcion Cargar y Mostrar datos*/
-
-        $('#verCarrito').click(productos,function () {
-
-        var vCarrito=JSON.parse(localStorage.getItem('carrito'));
-
-            let i=productos.length-1;
-        for (let index = i; index>0; index--) {
-            const producto = productos[index];
-            if(vCarrito.includes(producto.id_producto)){
-                $("#carrito>p").html("Este producto esta en el carrito"+producto.id_producto);
-                console.log("Este producto esta en el carrito"+producto.id_producto);
-                i=index;
-            }
-        }
-
-
-            // for (let index = 0; index < vCarrito.length; index++) {
-            //     htmlCode += '<table class="table table-hover">';
-            //     htmlCode += '<thead>';
-            //     htmlCode += '<tr>';
-            //     htmlCode += '<th scope="col">Imagen</th>';
-            //     htmlCode += '<th scope="col">Nombre</th>';
-            //     htmlCode += '<th scope="col">Cantidad</th>';
-            //     htmlCode += '<th scope="col">Precio/Unidad</th>';
-            //     htmlCode += '</tr>';
-            //     htmlCode += '</thead>';
-            //     htmlCode += '<tbody>';
-            //     htmlCode += '<tr>';
-            //     htmlCode += '<th scope="row">'+producto.imagen+'</th>';
-            //     htmlCode += '<td>'+producto.nombre+'</td>';
-            //     htmlCode += '<td>'+producto.quantity+'</td>';
-            //     htmlCode += '<td>@'+producto.price+'</td>';
-            //     htmlCode += '</tr>';
-            //     htmlCode += '</tbody>';
-            //     htmlCode += '</table>';
-                
-            // }
-            // $('#carrito').html(htmlCode);
-                
-            // }
-
-            // /*Obtener datos almacenados*/
-            //  var id = localStorage.getItem("carrito");
-
-            // // /*Mostrar datos almacenados*/
-
-            //  document.getElementById("carrito").innerHTML = id;
-
-
-        });
+        });      
     });
 
     function mostrarProducto(productos) {
@@ -214,7 +151,7 @@ $(document).ready(function () {
         var htmlCode = "";
 
         htmlCode += '';
-        htmlCode += '<a href="carrito.html" id="verCarrito" data-producto="'+vCarrito+'"class="btn btn-primary btn-lg " type="button" aria-pressed="true">Carrito</a>';
+        htmlCode += '<a href="carrito.html" id="verCarrito" class="btn btn-primary btn-lg " type="button" aria-pressed="true">Carrito</a>';
         htmlCode += '<a href="admin.html" class="btn btn-secondary btn-lg admin" type="button" aria-pressed="true">Admnin</a>';
 
         for (let index = 0; index < categorias.length; index++) {
