@@ -66,7 +66,7 @@ $(document).ready(function () {
             vCarrito[i].cantidad =  vCarrito[i].cantidad + 1; 
             
             $(this).siblings('.cantidad').html(vCarrito[i].cantidad);
-
+            localStorage.setItem('carrito', JSON.stringify(vCarrito));
             Totales();
            
            }
@@ -80,11 +80,15 @@ $(document).ready(function () {
         console.log($(this).data());
         for(i in vCarrito){
            if (id ==  vCarrito[i].id_producto){
-            vCarrito[i].cantidad =  vCarrito[i].cantidad - 1; 
-            $(this).siblings('.cantidad').html(vCarrito[i].cantidad);
-        
-            Totales();
-
+               if(vCarrito[i].cantidad>1){
+                    vCarrito[i].cantidad =  vCarrito[i].cantidad - 1; 
+                    $(this).siblings('.cantidad').html(vCarrito[i].cantidad);
+                    localStorage.setItem('carrito', JSON.stringify(vCarrito));
+                    Totales();
+               }
+               else{
+                   alert("No se puede reducir la cantidad de este producto a comprar...");
+               }
         }
         } 
     });
