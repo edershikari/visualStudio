@@ -180,6 +180,7 @@ $(document).ready(function () {
             $.getJSON('http://localhost:8080/proyectoV1/api/categoriasFiltrado', data, function (productos) {
                 console.log("FILTRADOS : " + productos);
                 mostrarTodos(productos);
+                mostrarProducto(productos);
 
             });
         });
