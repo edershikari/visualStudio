@@ -170,9 +170,9 @@ $(document).ready(function () {
         var htmlCode = "";
 
         htmlCode += '';
-        htmlCode += '<a href="carrito.html" id="verCarrito" class="btn btn-primary btn-lg " type="button" aria-pressed="true">Carrito</a>';
-        htmlCode += '<a href="admin.html" class="btn btn-secondary btn-lg admin" type="button" aria-pressed="true">Admnin</a>';
-
+        htmlCode += '<a href="carrito.html" id="verCarrito" class="btn btn-primary btn-lg " style="width:50%" type="button" aria-pressed="true">Carrito</a>';
+        htmlCode += '<a href="admin.html" class="btn btn-secondary btn-lg admin" style="width:50%" type="button" aria-pressed="true">Admin.</a>';
+        
         for (let index = 0; index < categorias.length; index++) {
             const categoria = categorias[index];
             //console.log(categoria.nombre);
@@ -199,6 +199,7 @@ $(document).ready(function () {
             $.getJSON('http://localhost:8080/proyectoV1/api/categoriasFiltrado', data, function (productos) {
                 console.log("FILTRADOS : " + productos);
                 mostrarTodos(productos);
+                mostrarProducto(productos);
 
             });
         });

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style_factura.css">
+    <title>FACTURA</title>
+</head>
+<body id="backgr" style=" border: solid 1px white">
+        
+    
+    <div class="row">
+        <div class="col-75">
+          <div class="container">
+            <form action="">
+      
+              <div class="row">
+                <div class="col-50">
+                  <h3>Datos personales</h3>
+                  <label for="fname"><i class="fa fa-user"></i> Nombre </label>
+                  <input type="text" id="fname" name="firstname" placeholder="Eder ">
+                  <label for="fname"><i class="fa fa-user"></i> Apellido</label>
+                  <input type="text" id="apellido" name="apellido" placeholder=" Landaluce">
+                  <label for="email"><i class="fa fa-envelope"></i> Correo</label>
+                  <input type="text" id="email" name="email" placeholder="eder.landaluce@fpzornotza.com">
+                  <label for="adr"><i class="fa fa-address-card-o"></i> Dirección</label>
+                  <input type="text" id="adr" name="address" placeholder="Arresi Kalea 12º-1">
+                  <label for="city"><i class="fa fa-institution"></i> Ciudad</label>
+                  <input type="text" id="city" name="city" placeholder="Bilbao">
+      
+                  <div class="row">
+                    <div class="col-50">
+                      <label for="state">Pueblo</label>
+                      <input type="text" id="state" name="state" placeholder="Bermeo">
+                    </div>
+                    <div class="col-50">
+                      <label for="zip">C.Postal</label>
+                      <input type="text" id="zip" name="zip" placeholder="48370">
+                    </div>
+                  </div>
+                </div>
+      
+                <div class="col-50">
+                  <h3>Pago</h3>
+                  
+                 
+                  <label for="cname">Titular de tarjeta</label>
+                  <input type="text" id="cname" name="cardname" placeholder="Aitor Elorriaga">
+                  <label for="ccnum">Número de tarjeta </label>
+                  <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                  <label for="expmonth">Mes expiración</label>
+                  <input type="text" id="expmonth" name="expmonth" placeholder="Septiembre">
+      
+                  <div class="row">
+                    <div class="col-50">
+                      <label for="expyear">Año</label>
+                      <input type="text" id="expyear" name="expyear" placeholder="2018">
+                    </div>
+                    <div class="col-50">
+                      <label for="cvv">Codigo</label>
+                      <input type="text" id="cvv" name="cvv" placeholder="352">
+                    </div>
+                  </div>
+                </div>
+      
+              </div>
+              <label>
+                <input type="checkbox" checked="checked" name="sameadr"> Guardar datos de compra
+              </label>
+              <a href="lineaFactura.html">
+                <input type="button" value="Confirmar compra" class="btn">
+              </a>
+
+              <a href="carrito.html">
+                <input type="button" value="Volver" class="btn-back">
+              </a>
+            </form>
+          </div>
+        </div>
+      
+        <div class="col-25">
+          <div class="container">
+            <h4>Carrito
+              <span class="price" style="color:black">
+                <i class="fa fa-shopping-cart"></i> 
+                <b class="contador">4</b>
+              </span>
+            </h4>
+            <div class="CarritoFactura">
+              <p> 1<span class="price">$15</span></p>
+            </div>
+            <hr>
+            <p>Total <span class="price precioTotal" style="color:black"><b>$30</b></span></p>
+          </div>
+        </div>
+      </div>
+        
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="js/factura.js"></script>
+</html>
+
+
+
+
+
