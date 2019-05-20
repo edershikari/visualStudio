@@ -1,7 +1,8 @@
 
+var vCarrito;
 $(document).ready(function () {
 
-    var vCarrito = [];
+    vCarrito = [];
     //localStorage.removeItem("carrito");
 
     var htmlCode = "";
@@ -22,14 +23,31 @@ $(document).ready(function () {
         //anadirEventosABotonCarrito
         
 
+/*         var CarritoArray = [
+           1:{
+                id_producto : 1,
+                nombre : producto.nombre,
+                imagen  : producto.imagen,
+                cantidad : 1,
+                precio : producto.precio
+            },
+            {
+                id_producto : 2,
+                nombre : producto.nombre,
+                imagen  : producto.imagen,
+                cantidad : 1,
+                precio : producto.precio
+            }
+        ]
+ */
 
 
         $('.aniadir').click(function () {
 
             var producto = choosenProduct(productos, $(this));
-
             /*Captura de datos escrito en los inputs*/
             var compra ={
+                cantidad : 1,
                 id_producto : producto.id_producto,
                 nombre : producto.nombre,
                 imagen  : producto.imagen,
@@ -53,6 +71,7 @@ $(document).ready(function () {
             }
             if(repetido==false){
                 vCarrito.push(compra);
+               // vCarrito[compra.id_producto] = compra;
             }
             /*Guardando los datos en el LocalStorage*/
             //Almacenar en local storage el array de id-s

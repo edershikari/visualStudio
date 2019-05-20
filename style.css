@@ -15,7 +15,16 @@ body{
     height: 220px;
   }
   
-  
+  .contenedor{
+    text-align:center;
+    }
+    .left{
+    float: left;
+    }
+    .right{
+    float: right;
+    }
+
   
   .container .btn:hover {
     background-color: black;
