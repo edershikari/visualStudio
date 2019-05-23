@@ -1,9 +1,9 @@
 var vCarrito;
+var TotalCarrito;
 var total;
 $(document).ready(function () {
     vCarrito=JSON.parse(localStorage.getItem('carrito'));
-    
-    total=0;
+    TotalCarrito=JSON.parse(localStorage.getItem('TotalCarrito'));
     var htmlCode;
 
 
@@ -29,10 +29,9 @@ $(document).ready(function () {
         $.getJSON('http://localhost:8080/proyectoV1/api/productos', function (productos) {
             var total=encontrarTotal(productos);
             $('.precioTotal').html(total+"€");  
-    
+            localStorage.setItem('TotalCarrito', JSON.stringify(total));
         }); 
         // total= encontrarTotal();
-        localStorage.setItem('TotalCarrito', JSON.stringify(total));
         function encontrarTotal(productos){
             var total=0;
             for (let i = 0; i < vCarrito.length; i++) {
@@ -51,7 +50,34 @@ $(document).ready(function () {
             return total;
         }
     }
+    
 
+    
+    $("#submit").click(function () {
 
+        //alert( "Handler for .click() called." );
+        var nombre = $(this).val("nombre");
+        var apellido = $(this).val("apellido");
+        var dni = $(this).val("dni");
+        var correo = $(this).val("correo");
+        var telefono = $(this).val("telefono");
+        var num_tarjeta = $(this).val("num_tarjeta");
+
+        var data = {
+            carrito : localStorage.getItem("carrito"),
+            nombre : nombre,
+            apellido : apellido,
+            dni : dni,
+            correo : correo,
+            telefono : telefono,
+            num_tarjeta : num_tarjeta,
+            total_factura : localStorage.getItem("TotalCarrito")
+        };
+
+        $.getJSON('http://localhost:8080/proyectoV1/RellenarFactura', data, function (factura) {
+          console.log(factura);
+
+        });
+    });
 
 });

@@ -34,11 +34,12 @@ $(document).ready(function () {
     function Totales(){
     $.getJSON('http://localhost:8080/proyectoV1/api/productos', function (productos) {
         var total=encontrarTotal(productos);
-        $('#TotalCarrito').html(total+"€");  
+        $('#TotalCarrito').html(total+"€"); 
+        localStorage.setItem('TotalCarrito', JSON.stringify(total));
+ 
 
     }); 
     // total= encontrarTotal();
-    localStorage.setItem('TotalCarrito', JSON.stringify(total));
     function encontrarTotal(productos){
         var total=0;
         for (let i = 0; i < vCarrito.length; i++) {
