@@ -34,11 +34,12 @@ $(document).ready(function () {
     function Totales(){
     $.getJSON('http://localhost:8080/proyectoV1/api/productos', function (productos) {
         var total=encontrarTotal(productos);
-        $('#TotalCarrito').html(total+"€");  
+        $('#TotalCarrito').html(total+"€"); 
+        localStorage.setItem('TotalCarrito', JSON.stringify(total));
+ 
 
     }); 
     // total= encontrarTotal();
-    localStorage.setItem('TotalCarrito', JSON.stringify(total));
     function encontrarTotal(productos){
         var total=0;
         for (let i = 0; i < vCarrito.length; i++) {
@@ -66,7 +67,7 @@ $(document).ready(function () {
             vCarrito[i].cantidad =  vCarrito[i].cantidad + 1; 
             
             $(this).siblings('.cantidad').html(vCarrito[i].cantidad);
-
+            localStorage.setItem('carrito', JSON.stringify(vCarrito));
             Totales();
            
            }
@@ -80,11 +81,15 @@ $(document).ready(function () {
         console.log($(this).data());
         for(i in vCarrito){
            if (id ==  vCarrito[i].id_producto){
-            vCarrito[i].cantidad =  vCarrito[i].cantidad - 1; 
-            $(this).siblings('.cantidad').html(vCarrito[i].cantidad);
-        
-            Totales();
-
+               if(vCarrito[i].cantidad>1){
+                    vCarrito[i].cantidad =  vCarrito[i].cantidad - 1; 
+                    $(this).siblings('.cantidad').html(vCarrito[i].cantidad);
+                    localStorage.setItem('carrito', JSON.stringify(vCarrito));
+                    Totales();
+               }
+               else{
+                   alert("No se puede reducir la cantidad de este producto a comprar...");
+               }
         }
         } 
     });
